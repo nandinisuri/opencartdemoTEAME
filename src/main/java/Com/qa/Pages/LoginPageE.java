@@ -13,7 +13,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import Com.qa.Browser.LoadDriver;
 
-public class LoginPage extends LoadDriver {
+public class LoginPageE extends LoadDriver {
 	private WebDriver driver;
 
 	@FindBy(id="input-email")
@@ -26,7 +26,7 @@ public class LoginPage extends LoadDriver {
 	WebElement loginbtn;
 
 
-	public LoginPage(WebDriver driver) throws IOException {
+	public LoginPageE(WebDriver driver) throws IOException {
 		PageFactory.initElements(driver, this);
 		this.driver = driver;
 		 FileInputStream f= new FileInputStream("C:\\Users\\dell\\Desktop\\excellogin.xlsx");
@@ -45,7 +45,7 @@ public class LoginPage extends LoadDriver {
 			driver.findElement(By.id("input-password")).sendKeys(col2);
 	
 	}
-	public void clickLogin() {
+	public void clickLoginbtn() {
 		loginbtn.click();   
 	}
 }

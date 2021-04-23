@@ -21,30 +21,30 @@ public class UserRegistrationPage extends LoadDriver {
 	WebElement myaccount;
 	@FindBy(xpath = "//a[text()='Register']")
 	WebElement register;
-	@FindBy(xpath = "//input[@name='firstname']")
-	WebElement firstName;
-	@FindBy(xpath = "//input[@name='lastname']")
-	WebElement lastName;
-	@FindBy(xpath = "//input[@id='input-email']")
-	WebElement email;
-	@FindBy(xpath = "//input[@id='input-telephone']")
-	WebElement phone;
+	@FindBy(xpath = "//*[@id=\"input-firstname\"]")
+	WebElement first;
+	@FindBy(xpath = "//*[@id=\"input-lastname\"]")
+	WebElement last;
+	@FindBy(xpath = "//*[@id=\"input-email\"]")
+	WebElement mail;
+	@FindBy(xpath = "//*[@id=\"input-telephone\"]")
+	WebElement phonenumber;
 	@FindBy(xpath = "//input[@id='input-password']")
-	WebElement password;
+	WebElement Password;
 	@FindBy(xpath = "//input[@id='input-confirm']")
-	WebElement confirmPwd;
+	WebElement confirmPswd;
 	@FindBy(xpath = "//input[@value=1 and @name='newsletter']")
-	WebElement subscribe;
-	@FindBy(xpath = "//input[@name='agree']")
-	WebElement privacyPolicy;
-	@FindBy(xpath = "//input[@value='Continue']")
-	WebElement continueBtn;
+	WebElement subscribed;
+	@FindBy(xpath = "//*[@id=\"content\"]/form/div/div/input[1]")
+	WebElement privacyPolicee;
+	@FindBy(xpath = "//*[@id=\"content\"]/form/div/div/input[2]")
+	WebElement continueButton;
 	@FindBy(xpath = "//a[text()='Continue']")
-	WebElement continueBtn2;
+	WebElement continueButton2;
 	@FindBy(xpath = "//div[@class='col-sm-10']/div[@class='text-danger']")
-	WebElement errorMsg;
+	WebElement errorMsgd;
 	@FindBy(xpath = "//a[text()='Edit Account']")
-	WebElement lnkeditAccount;
+	WebElement lnkeditAccountt;
 	@FindBy(xpath = "//input[@value='Continue']")
 	WebElement btncontinue;
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
@@ -71,43 +71,43 @@ public class UserRegistrationPage extends LoadDriver {
 
 		//Waits.waitperiod();
 
-		firstName.sendKeys(prop.getProperty("FirstName"));
-		lastName.sendKeys(prop.getProperty("LastName"));
-		email.sendKeys(prop.getProperty("Email"));
-		phone.sendKeys(prop.getProperty("Phone"));
-		password.sendKeys(prop.getProperty("Password"));
-		confirmPwd.sendKeys(prop.getProperty("Password"));
-		subscribe.click();
-		privacyPolicy.click();
-		continueBtn.click();
-		continueBtn2.click();
+		first.sendKeys("nandini");
+		last.sendKeys("suri");
+		mail.sendKeys(prop.getProperty("Email"));
+		phonenumber.sendKeys("9494220178");
+		Password.sendKeys(prop.getProperty("Password"));
+		confirmPswd.sendKeys("Mahika@124");
+		subscribed.click();
+		privacyPolicee.click();
+		continueButton.click();
+		//continueButton2.click();
 	}
 
 	public void createAccountWithoutPhone() {
 
 		//Waits.waitperiod();
 
-		firstName.sendKeys(prop.getProperty("FirstName"));
-		lastName.sendKeys(prop.getProperty("LastName"));
-		email.sendKeys(prop.getProperty("Email"));
+		first.sendKeys(prop.getProperty("FirstName"));
+		last.sendKeys(prop.getProperty("LastName"));
+		//mail.sendKeys(prop.getProperty("Email"));
 		// phone.sendKeys(prop.getProperty("Phone"));
 
-		password.sendKeys(prop.getProperty("Password"));
-		confirmPwd.sendKeys(prop.getProperty("Password"));
-		subscribe.click();
-		privacyPolicy.click();
-		continueBtn.click();
+		Password.sendKeys(prop.getProperty("Password"));
+		confirmPswd.sendKeys(prop.getProperty("Password"));
+		subscribed.click();
+		privacyPolicee.click();
+		continueButton.click();
 		// continueBtn2.click();
-		String error = errorMsg.getText();
+		String error = errorMsgd.getText();
 		Reporter.log(error);
 		System.out.println(error);
 
 	}
 
 	public void editAccount() {
-		lnkeditAccount.click();
-		lastName.clear();
-		lastName.sendKeys(prop.getProperty("LastNameedit"));
+		lnkeditAccountt.click();
+		last.clear();
+		last.sendKeys(prop.getProperty("LastNameedit"));
 		btncontinue.click();
 		String actual = ((JavascriptExecutor) driver).executeScript("return arguments[0].innerText", msgRead)
 				.toString();

@@ -1,7 +1,12 @@
 package Com.qa.Pages;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -39,9 +44,25 @@ public class WishListPage extends LoadDriver{
 	 Actions action = new Actions(driver);
 	 action.moveToElement(components).click().build().perform();
 	 monitors.click();
-	 
+	
 	 Select select = new Select(sortby_dropdown);
      select.selectByVisibleText("Price (High > Low)");
+	 wishlist_button.click();
+	 Thread.sleep(2000);
+	 wishlist_icon.click();
+	 addtocart.click();
+	 Thread.sleep(2000);
+	 TakesScreenshot ts = (TakesScreenshot) driver;
+		File src = ts.getScreenshotAs(OutputType.FILE);
+		String path = System.getProperty("user.dir") + "/screenshots/" + System.currentTimeMillis() + ".png";
+		File destination = new File(path);
+		try {
+			FileUtils.copyFile(src, destination);
+			return;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return;
+		}
 	
 	
 

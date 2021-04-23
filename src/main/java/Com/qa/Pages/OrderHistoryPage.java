@@ -16,33 +16,32 @@ import Com.qa.Browser.LoadDriver;
 
 
 public class OrderHistoryPage extends LoadDriver {
-	WebDriver driver;
-	@FindBy(xpath = "(//a[text()='Order History'])[3]")
-	WebElement orderHistory;
-	@FindBy(xpath = "//i[@class='fa fa-eye']")
-	WebElement view;
-
-	public OrderHistoryPage() {
-		
-		PageFactory.initElements(driver, this);
+	@FindBy(xpath="//*[@id=\"top-links\"]/ul/li[2]/a/span[1]")
+	WebElement MyAccount;
+	@FindBy(xpath="//*[@id=\"top-links\"]/ul/li[2]/ul/li[2]/a")
+	WebElement orderhistory;
+	@FindBy(xpath="//*[@id=\"content\"]/div/div/a")
+	WebElement Continue;
+	public OrderHistoryPage(WebDriver driver) throws IOException {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	
-	public void orderHistoryView() throws Exception {
-		
-		orderHistory.click();
-		view.click();
-		TakesScreenshot ts = (TakesScreenshot)driver;
- 		File src = ts.getScreenshotAs(OutputType.FILE);
- 		String path = System.getProperty("user.dir")+"\"E:\\\\JavaPractice\\\\OpenCartRepo\\\\screenshot\", \"ViewOrder\"";
- 		File destination = new File(path);
- 		try {
- 			FileUtils.copyFile(src, destination);
- 			return;
- 		}catch(IOException e) {
- 			e.printStackTrace();
- 			return;
- 		}}
-	
+public void Order_History() {
+	MyAccount.click();
+	orderhistory.click();
+	Continue.click();
+
+	 TakesScreenshot ts = (TakesScreenshot) driver;
+		File src = ts.getScreenshotAs(OutputType.FILE);
+		String path = System.getProperty("user.dir") + "/screenshots/" + System.currentTimeMillis() + ".png";
+		File destination = new File(path);
+		try {
+			FileUtils.copyFile(src, destination);
+			return;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return;
+		}}
 	
 	
 	

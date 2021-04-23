@@ -56,10 +56,7 @@ public class UploadFilePage extends LoadDriver  {
 	
 	public void Add_to_cart() {
 		 
-		 Actions action = new Actions(driver);
-		 
-		  action.moveToElement(components).build().perform();
-		  action.click();
+		 components.click();
 		  monitors.click();
 		  applecinema.click();
 		}
@@ -82,7 +79,9 @@ public void Avbl_Information() {
 		Addtocart.click();
 		 File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		 try {
-		 FileUtils.copyFile(screenshot, new File("D:\\Selenium\\Com.qa.OpenCart\\screenshot" + FileName));
+				String errormessage = textarea.getText();
+
+		 FileUtils.copyFile(screenshot, new File("E:\\seleniumFiles\\selenium_workspace\\com.qa.Opencarthack\\screenshot" + FileName));
 		 } catch (IOException e) {
 		 }
 		 

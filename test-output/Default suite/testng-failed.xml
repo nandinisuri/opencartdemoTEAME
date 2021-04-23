@@ -5,8 +5,16 @@
     <classes>
       <class name="Com.qa.Tests.UserRegisterTest">
         <methods>
-          <include name="Register"/>
+          <include name="applyCouponCode"/>
+          <include name="uploadFile"/>
+          <include name="registerbillingDetails"/>
+          <include name="orderPlacementWithGuest"/>
+          <include name="navigateHome"/>
+          <include name="whishListTest"/>
           <include name="launchBrowser"/>
+          <include name="productAvailabitlyInCart"/>
+          <include name="emptyCouponCode"/>
+          <include name="orderHistory"/>
         </methods>
       </class> <!-- Com.qa.Tests.UserRegisterTest -->
     </classes>

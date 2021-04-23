@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Default test(failed)">
+<suite parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="Com.qa.TestUtil.TestListener"/>
+  </listeners>
+  <test thread-count="5" parallel="tests" name="Test(failed)">
+    <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="Com.qa.Tests.UserRegisterTest">
+      <class name="Com.qa.Tests.OpencartApplicationTest">
         <methods>
-          <include name="Register"/>
+          <include name="navigateHome"/>
+          <include name="registerbillingDetails"/>
           <include name="launchBrowser"/>
+          <include name="Orderhistory"/>
+          <include name="whishListTest"/>
+          <include name="emptyCouponCode"/>
+          <include name="productAvailabitlyInCart"/>
+          <include name="applyCouponCode"/>
+          <include name="uploadFile"/>
         </methods>
-      </class> <!-- Com.qa.Tests.UserRegisterTest -->
+      </class> <!-- Com.qa.Tests.OpencartApplicationTest -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

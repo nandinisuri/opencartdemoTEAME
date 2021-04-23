@@ -86,10 +86,13 @@ public class ApplyCouponCode extends LoadDriver {
 	 Date newdate = new Date();
 	 
 	 String FileName = newdate.toString().replace(":", "_").replace(" ", "_") + ".png";
-	 public ApplyCouponCode() {
+	 public ApplyCouponCode(WebDriver driver2) {
 	 PageFactory.initElements(driver, this);
 	 }
-	 
+	 public void Apply_Couponcode() {
+		 couponcode.sendKeys("AB003");
+		 apply_couponcode.click();
+	 }
 	 public void Empty_Couponcode() throws InterruptedException {
 	 shoppingcart.click();
 	 couponcode.click();

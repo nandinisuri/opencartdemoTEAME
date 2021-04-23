@@ -26,19 +26,21 @@ import Com.qa.Browser.LoadDriver;
 public class PlacementOrderPage extends LoadDriver {
 	WebDriver driver;
 	
-	@FindBy(xpath = "//a[@class='dropdown-toggle' and text()='Laptops & Notebooks']")
-	WebElement laptops;
-	@FindBy(xpath = "//a[@class='see-all' and text()='Show All Laptops & Notebooks']")
-	WebElement showLaptops;
-
-	// @FindBy(xpath="//img[@title='HP LP3065']") WebElement hpproduct;
-	@FindBy(xpath = "//a[text() ='HP LP3065']")
-	WebElement hp_LP3065;
+	@FindBy(xpath="//*[@id=\"menu\"]/div[2]/ul/li[2]/a")
+	WebElement LaptopsandNotebookss;
+	
+	@FindBy(xpath="//*[@id=\"menu\"]/div[2]/ul/li[2]/div/a")
+	WebElement ShowLaptopsandNotebookss;
+	
+	@FindBy(xpath="//*[@id=\"content\"]/div[4]/div[1]/div/div[2]/div[1]/h4/a")
+	WebElement HP_LP3065c;
 	@FindBy(id = "input-option225")
 	WebElement date;
 
 	@FindBy(id = "button-cart")
 	WebElement addToCart;
+	@FindBy(xpath="//span[@id='cart-total']")
+	WebElement item_cart;
 	@FindBy(id = "cart")
 	WebElement viewCart;
 
@@ -61,9 +63,9 @@ public class PlacementOrderPage extends LoadDriver {
 	@FindBy(id = "input-payment-email")
 	WebElement email;
 	@FindBy(id = "input-payment-password")
-	WebElement paymentPsw;
+	WebElement paymentPswd;
 	@FindBy(id = "input-payment-confirm")
-	WebElement paymentConfirmPsw;
+	WebElement paymentConfirmPswd;
 	@FindBy(name = "address_1")
 	WebElement address;
 	@FindBy(name = "city")
@@ -94,9 +96,11 @@ public class PlacementOrderPage extends LoadDriver {
 	WebElement agreeTerms;
 	@FindBy(id = "button-confirm")
 	WebElement btnconfirmOrder;
+	@FindBy(xpath="//*[@id=\"content\"]/div/div/a")
+	WebElement continueorder;
 	@FindBy(xpath = "//input[@name='agree' and @value='1']")
 	WebElement registerBillingCheckbox;
-	@FindBy(xpath = "//input[@id='button-register' and @value='Continue']")
+	@FindBy(xpath = "//*[@id=\"button-register\"]")
 	WebElement btnregisterBillingContinue;
 	@FindBy(id = "button-payment-method")
 	WebElement btnpaymentContinue;
@@ -107,11 +111,10 @@ public class PlacementOrderPage extends LoadDriver {
 
 	public void findProduct() {
 
-		Actions pointer = new Actions(driver);
-		pointer.clickAndHold(laptops).build().perform();
-		showLaptops.click();
+		LaptopsandNotebookss.click();
+		ShowLaptopsandNotebookss.click();
 		
-		hp_LP3065.click();
+		 HP_LP3065c.click();
 		//Waits.waitperiod();
 		// ScrollPage.scrollPagedown();
 		date.clear();
@@ -120,6 +123,9 @@ public class PlacementOrderPage extends LoadDriver {
 
 	public void addToCart() {
 		addToCart.click();
+	}
+	public void clickitemcart() {
+		item_cart.click();
 	}
 
 	public void viewCart() {
@@ -165,8 +171,8 @@ public class PlacementOrderPage extends LoadDriver {
 	}
 
 	public void registerBillingDetails() {
-		paymentPsw.sendKeys(prop.getProperty("Password"));
-		paymentConfirmPsw.sendKeys(prop.getProperty("Password"));
+		paymentPswd.sendKeys(prop.getProperty("Password"));
+		paymentConfirmPswd.sendKeys(prop.getProperty("CPassword"));
 
 		registerBillingCheckbox.click();
 		try {
@@ -203,6 +209,7 @@ public class PlacementOrderPage extends LoadDriver {
 
 	public void confirmOrder() {
 		btnconfirmOrder.click();
+		continueorder.click();
 	}
 	
 
